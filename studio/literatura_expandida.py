@@ -232,7 +232,7 @@ def generate_response(prompt: str, character_name: str, sources: List[Dict], boo
     description = character_data.get('description', '')
     language = book_config.get('language', 'es')
     
-    # Instrucciones de idioma por idioma de la obra
+    # Instrucciones de idioma
     language_instructions = {
         'es': 'Responde en español, usando lenguaje y estilo apropiados para la época de la obra.',
         'en': 'Respond in English, using language and style appropriate for the era of the work.',
