@@ -216,9 +216,10 @@ def search_chunks(query: str, chunks: List[Dict], top_k: int = 5) -> List[Dict]:
 
 def generate_response(prompt: str, character_name: str, sources: List[Dict], book_config: Dict, character_data: Dict) -> str:
     """
-    Genera respuesta usando Qwen2.5 vía Ollama.
+    Genera respuesta usando Qwen2.5 vía Hugging Face Inference API.
     """
-    import requests
+    import os
+    from huggingface_hub import InferenceClient
     
     # Preparar contexto de RAG
     context_text = ""
@@ -262,36 +263,30 @@ CONTEXTO DE LA OBRA (fragmentos relevantes):
 
 Ahora, responde a la pregunta del usuario como {character_name}:"""
 
-    # Construir mensaje para Ollama
-    ollama_payload = {
-        "model": "qwen2.5:7b",
-        "prompt": f"{system_prompt}\n\nUsuario: {prompt}\n\n{character_name}:",
-        "stream": False,
-        "options": {
-            "temperature": 0.7,
-            "top_p": 0.9,
-            "num_predict": 512
-        }
-    }
+    # Obtener token de Hugging Face
+    hf_token = os.getenv("HF_TOKEN", "")
+    
+    if not hf_token:
+        return f"*[Modo demo: Token de HF no configurado]*\n\nComo {character_name}, te comparto mi perspectiva sobre: {prompt}"
     
     try:
-        # Llamar a Ollama API
-        response = requests.post(
-            "http://localhost:11434/api/generate",
-            json=ollama_payload,
-            timeout=60
+        # Inicializar cliente de HF Inference API
+        client = InferenceClient(token=hf_token)
+        
+        # Generar respuesta con Qwen2.5
+        response = client.text_generation(
+            prompt=system_prompt + f"\n\nUsuario: {prompt}\n\n{character_name}:",
+            model="Qwen/Qwen2.5-7B-Instruct",
+            max_new_tokens=512,
+            temperature=0.7,
+            top_p=0.9
         )
         
-        if response.status_code == 200:
-            result = response.json()
-            return result.get('response', '').strip()
-        else:
-            return f"*[Error al conectar con Qwen2.5: {response.status_code}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt} es una pregunta que me hace reflexionar sobre mi experiencia en la obra."
-            
-    except requests.exceptions.ConnectionError:
-        return f"*[Ollama no está corriendo. Inicia con: ollama serve]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt} es una pregunta que me hace reflexionar sobre mi experiencia en la obra."
+        return response.strip()
+        
     except Exception as e:
-        return f"*[Error: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt} es una pregunta que me hace reflexionar sobre mi experiencia en la obra."
+        return f"*[Error al conectar con HF API: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt}"
+    
 # ================================
 # INICIALIZAR SESSION STATE
 # ================================
@@ -339,6 +334,14 @@ with st.sidebar:
     
     # Cargar personajes
     st.session_state.characters_data = load_characters(st.session_state.selected_book)
+
+        # DEBUG: Ver qué está cargando
+    print(f"🔍 DEBUG: selected_book = {st.session_state.selected_book}")
+    print(f"🔍 DEBUG: characters_data = {st.session_state.characters_data}")
+    
+    if st.session_state.characters_data:
+        characters = st.session_state.characters_data.get('characters', {})
+        print(f"🔍 DEBUG: characters keys = {list(characters.keys())}")
     
     if st.session_state.characters_data:
         characters = st.session_state.characters_data.get('characters', {})
