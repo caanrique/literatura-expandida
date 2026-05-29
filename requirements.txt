@@ -1,0 +1,26 @@
+# Literatura Expandida - Dependencies for Hugging Face Spaces
+# ===========================================================
+
+# Core
+streamlit>=1.30.0
+pyyaml>=6.0
+
+# NLP & Embeddings
+sentence-transformers>=2.2.0
+nomic>=2.0.0
+spacy>=3.7.0
+
+# Document processing
+pypdf>=3.17.0
+python-docx>=0.8.11
+
+# HTTP & Utilities
+requests>=2.31.0
+
+# SpaCy models (se instalan por separado, pero los listamos para referencia)
+# python -m spacy download es_core_news_sm
+# python -m spacy download en_core_web_sm
+# etc.
+
+# Optional: para producción
+# gunicorn>=21.2.0

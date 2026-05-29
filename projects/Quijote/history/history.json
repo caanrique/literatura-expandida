@@ -1,0 +1,52 @@
+{
+  "conversations": [
+    {
+      "timestamp": "2026-04-28T18:21:29.502324",
+      "prompt": "Lee SOLO la primera página de 'quijote_1.pdf' y extrae el texto.\nMuestra el contenido. Usa pypdf y limita a reader.pages[0].",
+      "response": "import PyPDF2\n\n# Abre el archivo PDF\nwith open('quijote_1.pdf', 'rb') as file:\n    reader = PyPDF2.PdfFileReader(file)\n    \n    # Lee la primera página\n    page = reader.getPage(0)\n    \n    # Extrae y muestra el texto\n    text = page.extractText()\n    print(text)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 7
+    },
+    {
+      "timestamp": "2026-04-29T17:40:16.480752",
+      "prompt": "Lee SOLO la primera página de 'quijote_1.pdf' y extrae el texto.\nUsa la librería 'pypdf'. Muestra el resultado.",
+      "response": "import PyPDF2\n\ndef extract_text_from_pdf(file_path):\n    try:\n        with open(file_path, 'rb') as file:\n            reader = PyPDF2.PdfFileReader(file)\n            if reader.numPages > 0:\n                page = reader.getPage(0)\n                text = page.extractText()\n                return text\n            else:\n                return \"No pages found in the PDF.\"\n    except FileNotFoundError:\n        return f\"Error: The file '{file_path}' was not found.\"\n\n# Example usage\nfile_path = 'quijote_1.pdf'  # Asegúrate de que el archivo esté en el mismo directorio o proporciona la ruta completa\ntext = extract_text_from_pdf(file_path)\nprint(text)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 3
+    },
+    {
+      "timestamp": "2026-04-29T17:54:05.276606",
+      "prompt": "Escribe código Python que use 'from pypdf import PdfReader' para leer 'quijote_1.pdf'.\nExtrae y muestra el texto de la primera página.",
+      "response": "from PyPDF2 import PdfReader\n\n# Crear un objeto PdfReader para leer el archivo PDF\npdf_reader = PdfReader(open('quijote_1.pdf', 'rb'))\n\n# Obtener el texto de la primera página\nfirst_page_text = pdf_reader.pages[0].extract_text()\n\n# Mostrar el texto de la primera página\nprint(first_page_text)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 7
+    },
+    {
+      "timestamp": "2026-04-29T17:55:58.857727",
+      "prompt": "Escribe código Python que use EXCLUSIVAMENTE 'from pypdf import PdfReader'.\nLee 'quijote_1.pdf' y extrae el texto de la primera página.\nNo uses PyPDF2, usa pypdf.",
+      "response": "file_path = 'C:/ruta/completa/a/quijote_1.pdf'",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 2
+    },
+    {
+      "timestamp": "2026-04-29T18:01:04.129616",
+      "prompt": "Escribe un script Python COMPLETO y EJECUTABLE que:\n1. Importe: from pypdf import PdfReader\n2. Lea el archivo: quijote_1.pdf\n3. Extraiga el texto de la primera página\n4. Imprima el texto con print()\n\nEl archivo está en la misma carpeta donde se ejecuta el script.\nNo incluyas explicaciones, solo el código.",
+      "response": "from PyPDF2 import PdfFileReader\n\n# Crear un lector PDF\nwith open(\"quijote_1.pdf\", \"rb\") as file:\n    reader = PdfFileReader(file)\n\n# Extraer el texto de la primera página\ntext = reader.getPage(0).extractText()\n\n# Imprimir el texto\nprint(text)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 7
+    },
+    {
+      "timestamp": "2026-04-29T18:53:13.800473",
+      "prompt": "Escribe un script Python COMPLETO y EJECUTABLE que:\n1. Importe: from pypdf import PdfReader\n2. Lea el archivo: quijote_1.pdf\n3. Extraiga el texto de la primera página\n4. Imprima el texto con print()\n\nEl archivo está en la misma carpeta donde se ejecuta el script.\nNo incluyas explicaciones, solo el código.",
+      "response": "from PyPDF2 import PdfFileReader\n\n# Abre el archivo PDF con la ruta completa\nwith open('C:/ruta/completa/a/archivo.pdf', 'rb') as file:\n    reader = PdfFileReader(file)\n    \n    # Verifica si el PDF está encriptado\n    if reader.isEncrypted:\n        # Desencripta el PDF con la contraseña (si es necesario)\n        reader.decrypt('contraseña')\n    \n    # Lee el contenido del PDF\n    for page_num in range(reader.numPages):\n        page = reader.getPage(page_num)\n        print(page.extractText())",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 20
+    }
+  ]
+}

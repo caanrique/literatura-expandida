@@ -1,0 +1,102 @@
+{
+  "book_id": "don_quijote",
+  "language": "es",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.405347",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "don_quijote": {
+      "canonical_name": "Don Quijote de la Mancha",
+      "aliases": [
+        "el caballero de la triste figura",
+        "Alonso Quijano"
+      ],
+      "traits": [
+        "idealista",
+        "valiente",
+        "loco",
+        "noble",
+        "soñador"
+      ],
+      "relationships": {
+        "sancho_panaza": "amo-escudero",
+        "dulcinea": "amor_idealizado"
+      },
+      "description": "Hidalgo que enloquece leyendo libros de caballerías"
+    },
+    "sancho_panaza": {
+      "canonical_name": "Sancho Panza",
+      "aliases": [
+        "el escudero",
+        "mi fiel Sancho"
+      ],
+      "traits": [
+        "práctico",
+        "leal",
+        "refranero",
+        "hambriento",
+        "sencillo"
+      ],
+      "relationships": {
+        "don_quijote": "escudero-amo"
+      },
+      "description": "Campesino que acompaña a Don Quijote como escudero"
+    },
+    "dulcinea": {
+      "canonical_name": "Dulcinea del Toboso",
+      "aliases": [
+        "Aldonza Lorenzo",
+        "mi señora"
+      ],
+      "traits": [
+        "bella",
+        "idealizada",
+        "distante",
+        "inspiradora"
+      ],
+      "relationships": {
+        "don_quijote": "amor_platónico"
+      },
+      "description": "Campesina idealizada por Don Quijote como su dama"
+    },
+    "rocinante": {
+      "canonical_name": "Rocinante",
+      "aliases": [
+        "el caballo",
+        "mi fiel rocín"
+      ],
+      "traits": [
+        "flaco",
+        "leal",
+        "cansado",
+        "noble"
+      ],
+      "relationships": {
+        "don_quijote": "caballo-jinete"
+      },
+      "description": "El viejo caballo de Don Quijote"
+    },
+    "el_cura": {
+      "canonical_name": "El Cura (Pero Pérez)",
+      "aliases": [
+        "el licenciado",
+        "mi amigo el cura"
+      ],
+      "traits": [
+        "sabio",
+        "prudente",
+        "amigo",
+        "conciliador"
+      ],
+      "relationships": {
+        "don_quijote": "amigo",
+        "barbero": "aliado"
+      },
+      "description": "Cura del pueblo que intenta curar la locura de Don Quijote"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# configs/books/divina_comedia.yaml
+book_id: "divina_comedia"
+
+metadata:
+  title: "Divina Comedia"
+  author: "Dante Alighieri"
+  year: 1320
+  language: "it"
+  genre: "poema_epico"
+  description: "Poema épico que describe el viaje de Dante a través del Infierno, Purgatorio y Paraíso"
+
+source:
+  file: "data/raw/divina_comedia/DivinaCommedia.docx"
+  format: "docx"
+  encoding: "utf-8"
+  output: "data/processed/divina_comedia_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+    - preserve_original_language: true  # ← NUEVO: no traducir
+
+character_extraction:
+  patterns:
+    - regex: "[A-Z][a-z]+"
+      role: "personaje"
+    - regex: "Infierno|Purgatorio|Paraíso"
+      role: "lugar"
+  ner_model: "spacy/es_core_news_sm"
+  min_mentions: 20
+
+persona_generation:
+  template: "configs/templates/persona_poema_epico.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "it"  # ← IMPORTANTE: el personaje responde en italiano
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "canto {canto}, línea {linea}"

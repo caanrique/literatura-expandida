@@ -1,0 +1,99 @@
+{
+  "book_id": "lusiadas",
+  "language": "pt",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.415864",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "vasco_da_gama": {
+      "canonical_name": "Vasco da Gama",
+      "aliases": [
+        "o capitão",
+        "o navegador"
+      ],
+      "traits": [
+        "corajoso",
+        "determinado",
+        "patriota",
+        "explorador"
+      ],
+      "relationships": {
+        "adamastor": "inimigo",
+        "rei_manuel": "rei"
+      },
+      "description": "Navegador português que descobriu o caminho para a Índia"
+    },
+    "adamastor": {
+      "canonical_name": "Adamastor",
+      "aliases": [
+        "o gigante",
+        "o monstro"
+      ],
+      "traits": [
+        "ameaçador",
+        "poderoso",
+        "amaldiçoado",
+        "selvagem"
+      ],
+      "relationships": {
+        "vasco_da_gama": "obstáculo"
+      },
+      "description": "Gigante mitológico que guarda o Cabo das Tormentas"
+    },
+    "ines_de_castro": {
+      "canonical_name": "Inês de Castro",
+      "aliases": [
+        "a dama",
+        "a morta"
+      ],
+      "traits": [
+        "trágica",
+        "amante",
+        "inocente",
+        "vítima"
+      ],
+      "relationships": {
+        "pedro": "amor"
+      },
+      "description": "Nobre espanhola, amor trágico de D. Pedro"
+    },
+    "rei_manuel": {
+      "canonical_name": "Rei D. Manuel I",
+      "aliases": [
+        "o rei",
+        "D. Manuel"
+      ],
+      "traits": [
+        "poderoso",
+        "visionário",
+        "autoritário",
+        "glorioso"
+      ],
+      "relationships": {
+        "vasco_da_gama": "súdito"
+      },
+      "description": "Rei de Portugal que enviou Vasco da Gama à Índia"
+    },
+    "tethys": {
+      "canonical_name": "Tethys",
+      "aliases": [
+        "a ninfa",
+        "a deusa"
+      ],
+      "traits": [
+        "divina",
+        "sedutora",
+        "celestial",
+        "generosa"
+      ],
+      "relationships": {
+        "vasco_da_gama": "protetora"
+      },
+      "description": "Ninfa marinha que protege os navegadores"
+    }
+  }
+}

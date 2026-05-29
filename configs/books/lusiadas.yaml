@@ -1,0 +1,46 @@
+# configs/books/lusiadas.yaml
+book_id: "lusiadas"
+
+metadata:
+  title: "Os Lusíadas"
+  author: "Luís de Camões"
+  year: 1572
+  language: "pt"
+  genre: "poema_epico"
+  description: "Poema épico sobre los viajes de Vasco da Gama y la historia de Portugal"
+
+source:
+  file: "data/raw/lusiadas/Luciadas.docx"
+  format: "docx"
+  encoding: "utf-8"
+  output: "data/processed/lusiadas_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+
+character_extraction:
+  patterns:
+    - regex: "[A-Z][a-z]+"
+      role: "personaje"
+    - regex: "Vasco da Gama|Adamastor|Inês de Castro"
+      role: "rol_principal"
+  ner_model: "spacy/pt_core_news_sm"
+  min_mentions: 10
+
+persona_generation:
+  template: "configs/templates/persona_poema_epico.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "pt"
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "Canto {canto}, Estrofe {stanza}"

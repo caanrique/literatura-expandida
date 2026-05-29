@@ -1,0 +1,46 @@
+# configs/books/hamlet.yaml
+book_id: "hamlet"
+
+metadata:
+  title: "Hamlet"
+  author: "William Shakespeare"
+  year: 1603
+  language: "en"
+  genre: "tragedia"
+  description: "Tragedia sobre el príncipe de Dinamarca que busca vengar la muerte de su padre"
+
+source:
+  file: "data/raw/hamlet/Hamlet.docx"
+  format: "docx"
+  encoding: "utf-8"
+  output: "data/processed/hamlet_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+
+character_extraction:
+  patterns:
+    - regex: "[A-Z][a-z]+"
+      role: "personaje"
+    - regex: "Prince|King|Queen|Ghost"
+      role: "rol_principal"
+  ner_model: "spacy/en_core_web_sm"
+  min_mentions: 10
+
+persona_generation:
+  template: "configs/templates/persona_tragedia.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "en"
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "Act {act}, Scene {scene}"

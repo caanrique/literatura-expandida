@@ -1,0 +1,46 @@
+# configs/books/fausto.yaml
+book_id: "fausto"
+
+metadata:
+  title: "Fausto"
+  author: "Johann Wolfgang von Goethe"
+  year: 1808
+  language: "de"
+  genre: "drama_filosofico"
+  description: "Drama sobre un erudito que hace un pacto con el diablo buscando conocimiento infinito"
+
+source:
+  file: "data/raw/fausto/Faust.docx"
+  format: "docx"
+  encoding: "utf-8"
+  output: "data/processed/fausto_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+
+character_extraction:
+  patterns:
+    - regex: "[A-Z][a-z]+"
+      role: "personaje"
+    - regex: "Faust|Mephisto|Gretchen"
+      role: "rol_principal"
+  ner_model: "spacy/de_core_news_sm"
+  min_mentions: 10
+
+persona_generation:
+  template: "configs/templates/persona_drama_filosofico.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "de"
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "Parte {part}, Línea {line}"

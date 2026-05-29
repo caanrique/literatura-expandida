@@ -1,0 +1,31 @@
+# Entorno virtual
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit local
+.streamlit/
+
+# Archivos grandes (no necesarios en production)
+data/raw/*.pdf
+data/raw/*.docx
+data/processed/*_processed_embeddings.json
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

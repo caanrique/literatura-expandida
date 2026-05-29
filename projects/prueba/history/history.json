@@ -1,0 +1,57 @@
+{
+  "conversations": [
+    {
+      "timestamp": "2026-04-27T17:22:32.041488",
+      "prompt": "escribe una función que salude\n",
+      "response": "```python\ndef saludar():\n    print(\"¡Hola! ¿Cómo estás?\")\n\n# Ejemplo de uso\nsaludar()\n```",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b"
+    },
+    {
+      "timestamp": "2026-04-27T17:45:47.119337",
+      "prompt": "escribe una función que sume dos números\n",
+      "response": "def sumar_numeros(a, b):\n    return a + b\n\n# Ejemplo de uso:\nresultado = sumar_numeros(3, 5)\nprint(\"La suma es:\", resultado)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b"
+    },
+    {
+      "timestamp": "2026-04-27T17:49:09.687037",
+      "prompt": "\"Crea un script que lea un archivo CSV, calcule el promedio de una columna y guarde el resultado en un nuevo archivo\"\n",
+      "response": "import csv\n\ndef calculate_average_from_csv(file_path, column_index):\n    with open(file_path, mode='r', newline='') as file:\n        reader = csv.reader(file)\n        next(reader)  # Skip header row if present\n        data = [float(row[column_index]) for row in reader]\n    \n    average = sum(data) / len(data)\n    return average\n\ndef save_average_to_csv(average, output_file_path):\n    with open(output_file_path, mode='w', newline='') as file:\n        writer = csv.writer(file)\n        writer.writerow(['Average'])\n        writer.writerow([average])\n\n# Example usage\ninput_file_path = 'input.csv'\noutput_file_path = 'output.csv'\ncolumn_index = 2  # Assuming the column index is 2 (third column)\n\ntry:\n    average = calculate_average_from_csv(input_file_path, column_index)\n    save_average_to_csv(average, output_file_path)\nexcept FileNotFoundError as e:\n    print(f\"Error: {e}\")",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b"
+    },
+    {
+      "timestamp": "2026-04-28T17:25:56.725628",
+      "prompt": "Escribe una función que sume dos números",
+      "response": "def sumar_numeros(a, b):\n    return a + b\n\n# Ejemplo de uso:\nresultado = sumar_numeros(3, 5)\nprint(\"La suma es:\", resultado)",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 0
+    },
+    {
+      "timestamp": "2026-04-29T18:24:37.810644",
+      "prompt": "escribe una función que salude\n",
+      "response": "def saludar():\n    print(\"¡Hola! ¿Cómo estás?\")\n\n# Ejemplo de uso\nsaludar()",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 0
+    },
+    {
+      "timestamp": "2026-04-29T18:42:07.363414",
+      "prompt": "entregame en codigo de python una función que diga 'hola'\n",
+      "response": "def decir_hola():\n    print(\"hola\")\n\ndecir_hola()",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 0
+    },
+    {
+      "timestamp": "2026-04-29T18:46:18.140980",
+      "prompt": "escribe una función que diga hola",
+      "response": "def decir_hola():\n    print(\"Hola\")\n\ndecir_hola()",
+      "classifier_model": "qwen-2.5",
+      "executor_model": "qwen-coder-7b",
+      "iterations": 0
+    }
+  ]
+}

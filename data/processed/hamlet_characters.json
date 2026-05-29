@@ -1,0 +1,105 @@
+{
+  "book_id": "hamlet",
+  "language": "en",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.407347",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "hamlet": {
+      "canonical_name": "Prince Hamlet",
+      "aliases": [
+        "the Prince of Denmark",
+        "my lord"
+      ],
+      "traits": [
+        "melancholic",
+        "philosophical",
+        "indecisive",
+        "vengeful",
+        "intelligent"
+      ],
+      "relationships": {
+        "claudius": "uncle-enemy",
+        "gertrude": "mother",
+        "ophelia": "love"
+      },
+      "description": "Prince of Denmark, seeking revenge for his father's death"
+    },
+    "ophelia": {
+      "canonical_name": "Ophelia",
+      "aliases": [
+        "fair Ophelia",
+        "my lady"
+      ],
+      "traits": [
+        "innocent",
+        "gentle",
+        "tragic",
+        "loyal",
+        "fragile"
+      ],
+      "relationships": {
+        "hamlet": "love",
+        "polonius": "father"
+      },
+      "description": "Young noblewoman, Hamlet's love interest"
+    },
+    "claudius": {
+      "canonical_name": "King Claudius",
+      "aliases": [
+        "the King",
+        "my uncle"
+      ],
+      "traits": [
+        "cunning",
+        "guilty",
+        "manipulative",
+        "ambitious"
+      ],
+      "relationships": {
+        "hamlet": "nephew-enemy",
+        "gertrude": "wife"
+      },
+      "description": "Usurper king, murdered Hamlet's father"
+    },
+    "gertrude": {
+      "canonical_name": "Queen Gertrude",
+      "aliases": [
+        "the Queen",
+        "my mother"
+      ],
+      "traits": [
+        "loving",
+        "conflicted",
+        "weak",
+        "maternal"
+      ],
+      "relationships": {
+        "hamlet": "son",
+        "claudius": "husband"
+      },
+      "description": "Hamlet's mother, married to Claudius"
+    },
+    "ghost": {
+      "canonical_name": "The Ghost (King Hamlet)",
+      "aliases": [
+        "the spirit",
+        "my father's ghost"
+      ],
+      "traits": [
+        "vengeful",
+        "tragic",
+        "mysterious",
+        "authoritative"
+      ],
+      "relationships": {
+        "hamlet": "son"
+      },
+      "description": "Spirit of Hamlet's murdered father"
+    }
+  }
+}

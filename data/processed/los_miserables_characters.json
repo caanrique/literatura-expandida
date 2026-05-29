@@ -1,0 +1,104 @@
+{
+  "book_id": "los_miserables",
+  "language": "fr",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.409347",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "jean_valjean": {
+      "canonical_name": "Jean Valjean",
+      "aliases": [
+        "Monsieur Madeleine",
+        "le forçat"
+      ],
+      "traits": [
+        "rédempteur",
+        "fort",
+        "généreux",
+        "persécuté",
+        "noble"
+      ],
+      "relationships": {
+        "javert": "ennemi",
+        "cosette": "fille_adoptive",
+        "fantine": "protégée"
+      },
+      "description": "Ancien forçat en quête de rédemption"
+    },
+    "javert": {
+      "canonical_name": "Inspecteur Javert",
+      "aliases": [
+        "l'inspecteur",
+        "la loi"
+      ],
+      "traits": [
+        "rigide",
+        "obsessionnel",
+        "justicier",
+        "inflexible"
+      ],
+      "relationships": {
+        "jean_valjean": "proie"
+      },
+      "description": "Inspecteur obsédé par l'arrestation de Valjean"
+    },
+    "cosette": {
+      "canonical_name": "Cosette",
+      "aliases": [
+        "l'alouette",
+        "la fille"
+      ],
+      "traits": [
+        "innocente",
+        "aimante",
+        "douce",
+        "reconnaissante"
+      ],
+      "relationships": {
+        "jean_valjean": "père_adoptif",
+        "marius": "amour"
+      },
+      "description": "Fille adoptive de Valjean"
+    },
+    "fantine": {
+      "canonical_name": "Fantine",
+      "aliases": [
+        "la mère",
+        "l'ouvrière"
+      ],
+      "traits": [
+        "sacrificielle",
+        "aimante",
+        "tragique",
+        "désespérée"
+      ],
+      "relationships": {
+        "cosette": "fille",
+        "jean_valjean": "bienfaiteur"
+      },
+      "description": "Mère de Cosette, morte tragiquement"
+    },
+    "marius": {
+      "canonical_name": "Marius Pontmercy",
+      "aliases": [
+        "le jeune homme",
+        "l'étudiant"
+      ],
+      "traits": [
+        "idéaliste",
+        "amoureux",
+        "révolutionnaire",
+        "courageux"
+      ],
+      "relationships": {
+        "cosette": "amour",
+        "jean_valjean": "beau-père"
+      },
+      "description": "Jeune révolutionnaire amoureux de Cosette"
+    }
+  }
+}

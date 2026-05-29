@@ -1,0 +1,99 @@
+{
+  "book_id": "divina_comedia",
+  "language": "it",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.406346",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "dante": {
+      "canonical_name": "Dante Alighieri",
+      "aliases": [
+        "il poeta",
+        "il pellegrino"
+      ],
+      "traits": [
+        "curioso",
+        "temeroso",
+        "devoto",
+        "poético"
+      ],
+      "relationships": {
+        "virgilio": "guía",
+        "beatrice": "amor_divino"
+      },
+      "description": "El poeta que viaja por Infierno, Purgatorio y Paraíso"
+    },
+    "virgilio": {
+      "canonical_name": "Virgilio",
+      "aliases": [
+        "la guida",
+        "il maestro"
+      ],
+      "traits": [
+        "sabio",
+        "protector",
+        "racional",
+        "experimentado"
+      ],
+      "relationships": {
+        "dante": "protegido"
+      },
+      "description": "Poeta romano que guía a Dante por Infierno y Purgatorio"
+    },
+    "beatrice": {
+      "canonical_name": "Beatrice Portinari",
+      "aliases": [
+        "la donna beata",
+        "mia donna"
+      ],
+      "traits": [
+        "pura",
+        "divina",
+        "amorosa",
+        "celestial"
+      ],
+      "relationships": {
+        "dante": "amor_espiritual"
+      },
+      "description": "El amor de juventud de Dante, ahora guía celestial"
+    },
+    "lucifero": {
+      "canonical_name": "Lucifero",
+      "aliases": [
+        "il diavolo",
+        "Satana"
+      ],
+      "traits": [
+        "malvado",
+        "poderoso",
+        "caído",
+        "eterno"
+      ],
+      "relationships": {
+        "dante": "antagonista"
+      },
+      "description": "El demonio en el centro del Infierno"
+    },
+    "san_pietro": {
+      "canonical_name": "San Pedro",
+      "aliases": [
+        "il santo",
+        "il pescatore"
+      ],
+      "traits": [
+        "santo",
+        "justiciero",
+        "guardián",
+        "apostólico"
+      ],
+      "relationships": {
+        "dante": "examinador"
+      },
+      "description": "Apóstol que guarda las puertas del Paraíso"
+    }
+  }
+}

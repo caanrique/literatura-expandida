@@ -1,0 +1,46 @@
+# configs/books/los_miserables.yaml
+book_id: "los_miserables"
+
+metadata:
+  title: "Les Misérables"
+  author: "Victor Hugo"
+  year: 1862
+  language: "fr"
+  genre: "novela_social"
+  description: "Novela sobre la justicia, la redención y la revolución en la Francia del siglo XIX"
+
+source:
+  file: "data/raw/los_miserables/Les_Miserables.docx"
+  format: "docx"
+  encoding: "utf-8"
+  output: "data/processed/los_miserables_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+
+character_extraction:
+  patterns:
+    - regex: "[A-Z][a-z]+"
+      role: "personaje"
+    - regex: "Jean Valjean|Javert|Cosette|Fantine"
+      role: "rol_principal"
+  ner_model: "spacy/fr_core_news_sm"
+  min_mentions: 15
+
+persona_generation:
+  template: "configs/templates/persona_novela_social.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "fr"
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "Libro {book}, Capítulo {chapter}"

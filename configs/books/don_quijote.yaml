@@ -1,0 +1,55 @@
+# configs/books/don_quijote.yaml
+book_id: "don_quijote"
+
+metadata:
+  title: "Don Quijote de la Mancha"
+  author: "Miguel de Cervantes"
+  year: 1605
+  language: "es"
+  genre: "novela"
+  description: "Obra fundacional de la literatura moderna española"
+
+source:
+  file: "data/raw/don_quijote/Don_Quijote.pdf"
+  format: "pdf"
+  encoding: "utf-8"
+  output: "data/processed/don_quijote_processed.json"
+
+preprocessing:
+  chunk_size: 512
+  chunk_overlap: 50
+  embedding_model: "nomic-ai/nomic-embed-text-v1.5"
+  cleaning_rules:
+    - remove_footnotes: true
+    - normalize_spaces: true
+    - preserve_chapter_markers: true
+
+character_extraction:
+  patterns:
+    - regex: "Don\\s+[A-Z][a-z]+"
+      role: "caballero"
+    - regex: "Sancho\\s+[A-Z][a-z]+"
+      role: "escudero"
+    - regex: "el\\s+[a-z]+\\s+de\\s+[A-Z][a-z]+"
+      role: "alias"
+  ner_model: "spacy/es_core_news_sm"
+  min_mentions: 15
+  main_characters:
+    - "Don Quijote de la Mancha"
+    - "Sancho Panza"
+    - "Dulcinea del Toboso"
+    - "Rocinante"
+    - "El Cura"
+  use_main_characters_only: true
+
+persona_generation:
+  template: "configs/templates/persona_novela.txt"
+  llm_model: "qwen2.5:7b"
+  response_language: "es"
+  examples_per_trait: 2
+  temperature: 0.7
+
+rag:
+  top_k: 5
+  similarity_threshold: 0.3
+  citation_format: "capítulo {chapter}, página {page}"

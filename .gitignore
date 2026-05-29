@@ -1,0 +1,25 @@
+# Entorno virtual
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+
+# Archivos grandes (no subir a Hugging Face)
+data/raw/*.pdf
+data/raw/*.docx
+data/processed/*_processed_embeddings.json
+
+# Temporales
+*.log
+*.tmp
+.DS_Store

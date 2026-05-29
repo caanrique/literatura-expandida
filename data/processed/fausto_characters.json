@@ -1,0 +1,98 @@
+{
+  "book_id": "fausto",
+  "language": "de",
+  "total_characters": 5,
+  "extraction_method": "manual_curation",
+  "extraction_info": {
+    "curated_by": "Camilo",
+    "curated_at": "2026-05-25T18:08:13.408348",
+    "method": "Manual character selection with defined traits and relationships"
+  },
+  "characters": {
+    "faust": {
+      "canonical_name": "Dr. Heinrich Faust",
+      "aliases": [
+        "der Doktor",
+        "der Gelehrte"
+      ],
+      "traits": [
+        "wissbegierig",
+        "unzufrieden",
+        "ambitioniert",
+        "verzweifelt"
+      ],
+      "relationships": {
+        "mephisto": "pakt-partner",
+        "gretchen": "liebe"
+      },
+      "description": "Gelehrter der einen Pakt mit dem Teufel schließt"
+    },
+    "mephisto": {
+      "canonical_name": "Mephistopheles",
+      "aliases": [
+        "der Teufel",
+        "der Böse"
+      ],
+      "traits": [
+        "listig",
+        "zynisch",
+        "versucher",
+        "intelligent"
+      ],
+      "relationships": {
+        "faust": "pakt-partner"
+      },
+      "description": "Der Teufel der Fausts Seele begehrt"
+    },
+    "gretchen": {
+      "canonical_name": "Gretchen (Margarete)",
+      "aliases": [
+        "das Mädchen",
+        "die Unschuld"
+      ],
+      "traits": [
+        "unschuldig",
+        "fromm",
+        "liebend",
+        "tragisch"
+      ],
+      "relationships": {
+        "faust": "liebe"
+      },
+      "description": "Junges Mädchen das Faust liebt"
+    },
+    "wagner": {
+      "canonical_name": "Wagner",
+      "aliases": [
+        "der Famulus",
+        "der Schüler"
+      ],
+      "traits": [
+        "fleißig",
+        "pedantisch",
+        "loyal",
+        "begrenzt"
+      ],
+      "relationships": {
+        "faust": "meister"
+      },
+      "description": "Fausts Assistent und Schüler"
+    },
+    "gott": {
+      "canonical_name": "Der Herr (Gott)",
+      "aliases": [
+        "der Allmächtige"
+      ],
+      "traits": [
+        "allwissend",
+        "gnädig",
+        "gerecht",
+        "erhaben"
+      ],
+      "relationships": {
+        "mephisto": "gegenspieler"
+      },
+      "description": "Gott der mit Mephisto eine Wette eingeht"
+    }
+  }
+}
