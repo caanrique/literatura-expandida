@@ -2,24 +2,35 @@
 venv/
 .venv/
 
-# Python cache
+# Python cache (IMPORTANTE)
 __pycache__/
 *.pyc
 *.pyo
-
-# Streamlit
-.streamlit/
 
 # IDE
 .vscode/
 .idea/
 
-# Archivos grandes (no subir a Hugging Face)
+# Streamlit local
+.streamlit/
+
+# Archivos sensibles
+.env
+*.key
+*.pem
+
+# Archivos grandes de datos (no subir a GitHub/HF)
 data/raw/*.pdf
 data/raw/*.docx
 data/processed/*_processed_embeddings.json
 
-# Temporales
+# LangGraph (no usado)
+langgraph.json
+.graph/
+
+# Logs
 *.log
-*.tmp
+
+# OS
 .DS_Store
+Thumbs.db
