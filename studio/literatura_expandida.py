@@ -273,16 +273,29 @@ Ahora, responde a la pregunta del usuario como {character_name}:"""
         # Inicializar cliente de HF Inference API
         client = InferenceClient(token=hf_token)
         
-        # Generar respuesta con Qwen2.5
-        response = client.text_generation(
-            prompt=system_prompt + f"\n\nUsuario: {prompt}\n\n{character_name}:",
+        # Construir mensajes para API conversacional
+        messages = [
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+        
+        # Generar respuesta con Qwen2.5 usando chat_completion
+        response = client.chat_completion(
             model="Qwen/Qwen2.5-7B-Instruct",
-            max_new_tokens=512,
+            messages=messages,
+            max_tokens=512,
             temperature=0.7,
             top_p=0.9
         )
         
-        return response.strip()
+        # Extraer el contenido de la respuesta
+        return response.choices[0].message.content.strip()
         
     except Exception as e:
         return f"*[Error al conectar con HF API: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt}"
