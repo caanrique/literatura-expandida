@@ -349,7 +349,7 @@ Ahora, responde a la pregunta del usuario como {character_name}:"""
         
         # Generar respuesta usando Llama 3 (ultra rápido y excelente en español)
         completion = client.chat.completions.create(
-            model="mixtral-8x7b-32768",
+            model="qwen-qwq-32b",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
