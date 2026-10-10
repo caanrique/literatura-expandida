@@ -7,7 +7,7 @@
 
 import streamlit as st
 import json
-import os
+import os 
 import sys
 from typing import Dict, List, Any
 
@@ -338,26 +338,36 @@ Ahora, responde a la pregunta del usuario como {character_name}:"""
     if not hf_token:
         return f"*[Modo demo: Token de HF no configurado]*\n\nComo {character_name}, te comparto mi perspectiva sobre: {prompt}"
     
+       # Obtener clave de Groq
+    groq_api_key = os.getenv("GROQ_API_KEY", "")
+    
+    if not groq_api_key:
+        return f"*[Modo demo: GROQ_API_KEY no configurada en el servidor]*\n\nComo {character_name}, te comparto mi perspectiva sobre: {prompt}"
+    
     try:
-        # Cliente nativo de Hugging Face
-        from huggingface_hub import InferenceClient
+        # Importar cliente oficial de Groq
+        from groq import Groq
         
-        client = InferenceClient(token=hf_token)
+        # Inicializar cliente
+        client = Groq(api_key=groq_api_key)
         
-        # Usar modelo pequeño que SÍ funciona en capa gratuita
-        response = client.text_generation(
-            prompt=system_prompt + f"\n\nUsuario: {prompt}\n\n{character_name}:",
-            model="google/gemma-2b-it",
-            max_new_tokens=512,
+        # Generar respuesta usando Llama 3 (ultra rápido y excelente en español)
+        completion = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ],
             temperature=0.7,
-            top_p=0.9,
-            stop=["Usuario:", character_name + ":"]
+            max_tokens=512,
+            top_p=0.9
         )
         
-        return response.strip()
+        # Extraer y devolver el texto generado
+        return completion.choices[0].message.content.strip()
         
     except Exception as e:
-        return f"*[Error al conectar con HF API: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt}"
+        return f"*[Error al conectar con Groq API: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt}"
 # ================================
 # INICIALIZAR SESSION STATE
 # ================================
