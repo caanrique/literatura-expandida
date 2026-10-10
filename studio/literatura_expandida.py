@@ -347,7 +347,7 @@ Ahora, responde a la pregunta del usuario como {character_name}:"""
         ]
         
         response = client.chat_completion(
-            model="Qwen/Qwen2.5-7B-Instruct",
+            model="google/gemma-2b-it",
             messages=messages,
             max_tokens=512,
             temperature=0.7,
