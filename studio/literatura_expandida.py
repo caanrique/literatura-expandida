@@ -339,26 +339,25 @@ Ahora, responde a la pregunta del usuario como {character_name}:"""
         return f"*[Modo demo: Token de HF no configurado]*\n\nComo {character_name}, te comparto mi perspectiva sobre: {prompt}"
     
     try:
+        # Cliente nativo de Hugging Face
+        from huggingface_hub import InferenceClient
+        
         client = InferenceClient(token=hf_token)
         
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt}
-        ]
-        
-        response = client.chat_completion(
+        # Usar modelo pequeño que SÍ funciona en capa gratuita
+        response = client.text_generation(
+            prompt=system_prompt + f"\n\nUsuario: {prompt}\n\n{character_name}:",
             model="google/gemma-2b-it",
-            messages=messages,
-            max_tokens=512,
+            max_new_tokens=512,
             temperature=0.7,
-            top_p=0.9
+            top_p=0.9,
+            stop=["Usuario:", character_name + ":"]
         )
         
-        return response.choices[0].message.content.strip()
+        return response.strip()
         
     except Exception as e:
         return f"*[Error al conectar con HF API: {str(e)}]*\n\nComo {character_name}, te comparto mi perspectiva: {prompt}"
-
 # ================================
 # INICIALIZAR SESSION STATE
 # ================================
