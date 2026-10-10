@@ -333,11 +333,7 @@ CONTEXTO DE LA OBRA (fragmentos relevantes):
 
 Ahora, responde a la pregunta del usuario como {character_name}:"""
 
-    hf_token = os.getenv("HF_TOKEN", "")
-    
-    if not hf_token:
-        return f"*[Modo demo: Token de HF no configurado]*\n\nComo {character_name}, te comparto mi perspectiva sobre: {prompt}"
-    
+
        # Obtener clave de Groq
     groq_api_key = os.getenv("GROQ_API_KEY", "")
     
